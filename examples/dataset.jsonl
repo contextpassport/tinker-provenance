@@ -1,0 +1,4 @@
+{"messages": [{"role": "user", "content": "How do I reset my password?"}, {"role": "assistant", "content": "Open Settings, choose Security, then Reset password. You will get an email link that expires in one hour."}]}
+{"messages": [{"role": "user", "content": "My invoice looks wrong."}, {"role": "assistant", "content": "I can help. Could you tell me the invoice number and which line item looks incorrect?"}]}
+{"messages": [{"role": "user", "content": "Cancel my subscription."}, {"role": "assistant", "content": "I can start that. Cancellation takes effect at the end of your current billing period, and you keep access until then. Shall I proceed?"}]}
+{"messages": [{"role": "user", "content": "Do you store my card details?"}, {"role": "assistant", "content": "Card details are held by our payment processor, not on our systems. We store only the last four digits and the expiry date."}]}

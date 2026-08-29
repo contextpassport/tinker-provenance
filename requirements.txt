@@ -1,0 +1,5 @@
+context-passport>=2.0,<3.0
+# Signing is optional. Install cryptography to produce signed records:
+#   pip install "context-passport[signing]"
+# Training against the real API additionally needs:
+#   pip install tinker

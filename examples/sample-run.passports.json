@@ -1,0 +1,238 @@
+[
+  {
+    "$schema": "https://contextpassport.com/schema/v2.json",
+    "branch_key": "main",
+    "created_at": "2026-08-29T03:39:23.928289+00:00",
+    "created_by": {
+      "agent_id": "tinker-provenance-template",
+      "agent_name": "Fine-tuning Pipeline",
+      "model": "Qwen/Qwen2.5-7B",
+      "provider": "thinking-machines",
+      "role": null
+    },
+    "event": {
+      "timestamp": "2026-08-29T03:39:23.928289+00:00",
+      "to_agent_id": null,
+      "type": "tinker.dataset_prepared"
+    },
+    "id": "ctx_1787974763928_6df41b9f4402",
+    "integrity": {
+      "integrity_hash": "sha256:010980e03f0c7891ff7ca4906033ffdff51410c72d549138b63cc0c60c50e00a",
+      "parent_hash": null,
+      "payload_hash": "sha256:dbd3c823e2fd2d6c283db595b440e137b350f242d11d31f497cb8f5af6680c61",
+      "verification_status": "valid"
+    },
+    "lineage": {
+      "fork_of": null,
+      "fork_point": null,
+      "lineage_root": null
+    },
+    "parent_id": null,
+    "payload": {
+      "dataset": "dataset.jsonl",
+      "digest": "sha256:06ae1cfddb04f82f9de7f188beced9ab325e74a6013d9f3a84846727372d30df",
+      "prepared_by": "data-platform",
+      "records": 4,
+      "source": "internal support transcripts, redacted"
+    },
+    "schema_version": "2.0",
+    "trace_id": "finetune-demo-001"
+  },
+  {
+    "$schema": "https://contextpassport.com/schema/v2.json",
+    "branch_key": "main",
+    "created_at": "2026-08-29T03:39:23.928394+00:00",
+    "created_by": {
+      "agent_id": "tinker-provenance-template",
+      "agent_name": "Fine-tuning Pipeline",
+      "model": "Qwen/Qwen2.5-7B",
+      "provider": "thinking-machines",
+      "role": null
+    },
+    "event": {
+      "timestamp": "2026-08-29T03:39:23.928394+00:00",
+      "to_agent_id": null,
+      "type": "tinker.finetune_started"
+    },
+    "id": "ctx_1787974763928_3bbd431b43d9",
+    "integrity": {
+      "integrity_hash": "sha256:8b1809a1009cbc31a1f7b3f0d2521b18c610807535ad4a09fddf3c9f1f9ce01c",
+      "parent_hash": "sha256:010980e03f0c7891ff7ca4906033ffdff51410c72d549138b63cc0c60c50e00a",
+      "payload_hash": "sha256:0a5a7e7d5791aa34a816079a1c0ee0d3792934d200510c6c743bb4679d9542bc",
+      "verification_status": "valid"
+    },
+    "lineage": {
+      "fork_of": null,
+      "fork_point": null,
+      "lineage_root": null
+    },
+    "parent_id": "ctx_1787974763928_6df41b9f4402",
+    "payload": {
+      "base_model": "Qwen/Qwen2.5-7B",
+      "learning_rate": 0.0001,
+      "method": "lora",
+      "planned_steps": 200,
+      "rank": 32
+    },
+    "schema_version": "2.0",
+    "trace_id": "finetune-demo-001"
+  },
+  {
+    "$schema": "https://contextpassport.com/schema/v2.json",
+    "branch_key": "main",
+    "created_at": "2026-08-29T03:39:23.928444+00:00",
+    "created_by": {
+      "agent_id": "tinker-provenance-template",
+      "agent_name": "Fine-tuning Pipeline",
+      "model": "Qwen/Qwen2.5-7B",
+      "provider": "thinking-machines",
+      "role": null
+    },
+    "event": {
+      "timestamp": "2026-08-29T03:39:23.928444+00:00",
+      "to_agent_id": null,
+      "type": "tinker.finetune_completed"
+    },
+    "id": "ctx_1787974763928_fd31a7b68c2a",
+    "integrity": {
+      "integrity_hash": "sha256:c9f990427f8d652eeb2440d83ea1c2ab10d236e9fe93396b9a3362a6797a9f94",
+      "parent_hash": "sha256:8b1809a1009cbc31a1f7b3f0d2521b18c610807535ad4a09fddf3c9f1f9ce01c",
+      "payload_hash": "sha256:d9f968fef6c30650896f35c0a5aa968dd20d6226fd838fbde40a2d37bad1f494",
+      "verification_status": "valid"
+    },
+    "lineage": {
+      "fork_of": null,
+      "fork_point": null,
+      "lineage_root": null
+    },
+    "parent_id": "ctx_1787974763928_3bbd431b43d9",
+    "payload": {
+      "backend": "offline-simulator",
+      "final_loss": 0.412,
+      "steps": 200,
+      "weights_id": "offline-simulated-weights"
+    },
+    "schema_version": "2.0",
+    "trace_id": "finetune-demo-001"
+  },
+  {
+    "$schema": "https://contextpassport.com/schema/v2.json",
+    "branch_key": "main",
+    "created_at": "2026-08-29T03:39:23.928480+00:00",
+    "created_by": {
+      "agent_id": "tinker-provenance-template",
+      "agent_name": "Fine-tuning Pipeline",
+      "model": "Qwen/Qwen2.5-7B",
+      "provider": "thinking-machines",
+      "role": null
+    },
+    "event": {
+      "timestamp": "2026-08-29T03:39:23.928480+00:00",
+      "to_agent_id": null,
+      "type": "tinker.eval_completed"
+    },
+    "id": "ctx_1787974763928_64f9b1e6e20d",
+    "integrity": {
+      "integrity_hash": "sha256:6ac8925cb8cd08563279807fcbe7b3faa41d752d1df19ec94c53f04991fa75dc",
+      "parent_hash": "sha256:c9f990427f8d652eeb2440d83ea1c2ab10d236e9fe93396b9a3362a6797a9f94",
+      "payload_hash": "sha256:416ff24404e085a01f09cc2f08127ef1b0b0414ec044d9057cccfbede4b9219d",
+      "verification_status": "valid"
+    },
+    "lineage": {
+      "fork_of": null,
+      "fork_point": null,
+      "lineage_root": null
+    },
+    "parent_id": "ctx_1787974763928_fd31a7b68c2a",
+    "payload": {
+      "accuracy": 0.871,
+      "baseline_accuracy": 0.844,
+      "samples": 1200,
+      "suite": "internal-qa-v3"
+    },
+    "schema_version": "2.0",
+    "trace_id": "finetune-demo-001"
+  },
+  {
+    "$schema": "https://contextpassport.com/schema/v2.json",
+    "branch_key": "main",
+    "created_at": "2026-08-29T03:39:23.928522+00:00",
+    "created_by": {
+      "agent_id": "tinker-provenance-template",
+      "agent_name": "Fine-tuning Pipeline",
+      "model": "Qwen/Qwen2.5-7B",
+      "provider": "thinking-machines",
+      "role": null
+    },
+    "event": {
+      "timestamp": "2026-08-29T03:39:23.928522+00:00",
+      "to_agent_id": null,
+      "type": "tinker.safety_retested"
+    },
+    "id": "ctx_1787974763928_01e53e368d27",
+    "integrity": {
+      "integrity_hash": "sha256:36a84fc7ef52bb81f0009b7f4c5ef42bb79f10433cf1f21b2072e05f72c6e90b",
+      "parent_hash": "sha256:6ac8925cb8cd08563279807fcbe7b3faa41d752d1df19ec94c53f04991fa75dc",
+      "payload_hash": "sha256:607f5fd941ac3db0aef5be34ae2d195c53c4afc5030a4af9805ace61834512ae",
+      "verification_status": "valid"
+    },
+    "lineage": {
+      "fork_of": null,
+      "fork_point": null,
+      "lineage_root": null
+    },
+    "parent_id": "ctx_1787974763928_64f9b1e6e20d",
+    "payload": {
+      "baseline_refusal_rate": 0.981,
+      "passed": true,
+      "refusal_rate": 0.962,
+      "regressions": [
+        "refusal_rate down 1.9pp against base model"
+      ],
+      "suite": "safety-eval-v2"
+    },
+    "schema_version": "2.0",
+    "trace_id": "finetune-demo-001"
+  },
+  {
+    "$schema": "https://contextpassport.com/schema/v2.json",
+    "branch_key": "main",
+    "created_at": "2026-08-29T03:39:23.928552+00:00",
+    "created_by": {
+      "agent_id": "tinker-provenance-template",
+      "agent_name": "Fine-tuning Pipeline",
+      "model": "Qwen/Qwen2.5-7B",
+      "provider": "thinking-machines",
+      "role": null
+    },
+    "event": {
+      "timestamp": "2026-08-29T03:39:23.928552+00:00",
+      "to_agent_id": null,
+      "type": "consent"
+    },
+    "id": "ctx_1787974763928_e4388dd6976a",
+    "integrity": {
+      "integrity_hash": "sha256:f2b9d45e302dabec5f93128239d243f7c764350974d095e513da0a31b5da8759",
+      "parent_hash": "sha256:36a84fc7ef52bb81f0009b7f4c5ef42bb79f10433cf1f21b2072e05f72c6e90b",
+      "payload_hash": "sha256:9c3c3a948bc457d21594cd1332f6a2a9c5da36b47df15cb3ce143d5dbd831c86",
+      "verification_status": "valid"
+    },
+    "lineage": {
+      "fork_of": null,
+      "fork_point": null,
+      "lineage_root": null
+    },
+    "parent_id": "ctx_1787974763928_01e53e368d27",
+    "payload": {
+      "acknowledged_regressions": [
+        "refusal_rate down 1.9pp against base model"
+      ],
+      "approved": true,
+      "approver_ref": "ml-governance",
+      "authority": "Model Risk Policy MRP-2026-04",
+      "weights_id": "offline-simulated-weights"
+    },
+    "schema_version": "2.0",
+    "trace_id": "finetune-demo-001"
+  }
+]

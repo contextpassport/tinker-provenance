@@ -1,0 +1,39 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  schedule:
+    # Monthly. The SDK is pinned to a major range, so a 2.x release that broke
+    # this template would otherwise go unnoticed until somebody cloned it.
+    - cron: "0 6 1 * *"
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - run: pip install -r requirements.txt "context-passport[signing]"
+
+      - name: Offline run produces an intact chain
+        run: python -m src.run --out ci.passports.json
+
+      - name: Signed run produces an intact chain
+        run: python -m src.run --sign --out ci-signed.passports.json
+
+      - name: Chain verifies
+        run: python -m src.verify ci.passports.json
+
+      - name: Tampering is detected
+        # src.verify exits 0 when it successfully DETECTS tampering, and 1 when
+        # an edited chain still verifies. So a pass here means the guarantee
+        # this template exists to provide actually held.
+        run: python -m src.verify ci.passports.json --tamper eval
+
+      - name: Committed example still verifies
+        run: python -m src.verify examples/sample-run.passports.json
