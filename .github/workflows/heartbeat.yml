@@ -1,0 +1,66 @@
+name: Keep schedule alive
+
+# GitHub disables scheduled workflows in a public repository after 60 days
+# with no repository activity. A repository that has settled down is exactly
+# what that rule punishes, and the monthly run is worth most when nobody is
+# committing. The SDK is pinned to a major range, so a 2.x release that
+# broke this template would otherwise go unnoticed until somebody cloned it.
+#
+# So the quiet stretch that makes the schedule most useful is the same
+# stretch that switches it off. That is not hypothetical here. This
+# repository last took a push on 2026-09-24, and two other repositories in
+# this organisation were already found switched off the same way, with this
+# one next in line.
+#
+# A monthly empty commit on a side branch counts as activity and resets the
+# clock well inside the 60 day window. The spec repository has kept its
+# Steward workflow alive this way since that workflow was written, so this
+# is the same mechanism in a repository that needs it just as much.
+#
+# It goes to a side branch rather than main for a concrete reason: main is
+# covered by a ruleset requiring pull requests, so the Actions token cannot
+# push there. Pushing elsewhere is also simply better, because this
+# repository's main branch should read as a record of real decisions and not
+# as a monthly stream of bot commits.
+#
+# The commit message carries the month, so running this more than once in a
+# month does nothing rather than stacking commits.
+
+on:
+  schedule:
+    - cron: '29 5 15 * *'   # 15th of each month, 05:29 UTC
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+env:
+  HEARTBEAT_BRANCH: ci-heartbeat
+
+jobs:
+  heartbeat:
+    name: Record a monthly heartbeat
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+
+      - name: Monthly heartbeat
+        run: |
+          set -euo pipefail
+          month=$(date -u +%Y-%m)
+          message="chore: ci heartbeat $month"
+
+          git fetch origin "$HEARTBEAT_BRANCH" --quiet 2>/dev/null || true
+          last=$(git log -1 --format=%s "origin/$HEARTBEAT_BRANCH" 2>/dev/null || echo '')
+          if [ "$last" = "$message" ]; then
+            echo "Heartbeat for $month already recorded."
+            exit 0
+          fi
+
+          git config user.name  'context-passport-steward'
+          git config user.email 'actions@github.com'
+          git commit --allow-empty -m "$message"
+          git push --force origin "HEAD:refs/heads/$HEARTBEAT_BRANCH"
+          echo "Heartbeat recorded for $month on $HEARTBEAT_BRANCH."
